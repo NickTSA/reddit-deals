@@ -1,32 +1,36 @@
-import React from 'react';
-import { images } from './categories';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React from "react";
+import { categories } from "./categories";
+import { Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Image } from "react-bootstrap";
+import UserIcon from "../images/user.png";
 
 function Navigation() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Home
+          Reddit Deals
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <NavDropdown title="Category" id="basic-nav-dropdown">
-              {images.map(image => (
+              {categories.map((category) => (
                 <Link
                   className="dropdown-item"
-                  key={image.title}
-                  to={'/' + image.title}
+                  key={category}
+                  to={"/" + category}
                 >
-                  {image.title}
+                  {category}
                 </Link>
               ))}
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Account</Nav.Link>
+            <Nav.Link href="#account">
+              <Image src={UserIcon} className="user-icon" />
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </div>
